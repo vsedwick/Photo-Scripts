@@ -1,0 +1,20 @@
+import pandas as pd
+
+
+rootdir=
+root=os.listdir(rootdir)
+for file in root:
+    if "_split" in file and file.endswith(".CSV"):
+        path=os.path.join(rootdir,file)
+        df=pd.read_csv(file)
+        print(df)
+        df.drop("Stimulation", inplace=True, axis=1)
+        df.drop("Output0", inplace=True, axis=1)
+        df.drop("Output1", inplace=True, axis=1)
+        df.drop("Input0", inplace=True, axis=1)
+        df.drop("Input1", inplace=True, axis=1)
+        print(df)
+        df.to_csv(path)
+    else:
+        continue
+
